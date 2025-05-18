@@ -1,15 +1,23 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Itaaf × Ibtisam - Premium Dhuti Panjabi</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Itaaf × Ibtisam - প্রিমিয়াম ধুতি পাঞ্জাবি কালেকশন</title>
   <style>
     body {
       font-family: sans-serif;
       margin: 0;
-      padding: 0;
+      padding: 0 10px;
       background-color: #f8f8f8;
+      font-size: 18px;
+      scroll-behavior: smooth;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 20px;
+        padding: 0 15px;
+      }
     }
     .container {
       max-width: 600px;
@@ -19,9 +27,11 @@
       box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
       border-radius: 10px;
       text-align: center;
+      position: relative;
     }
     h1, h2 {
       color: #222;
+      margin-bottom: 15px;
     }
     p {
       color: #555;
@@ -29,13 +39,16 @@
     }
     .btn {
       display: inline-block;
-      padding: 10px 20px;
+      padding: 10px 25px;
       background-color: #222;
       color: #fff;
       text-decoration: none;
       border-radius: 5px;
       margin-top: 15px;
       transition: background 0.3s ease;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 18px;
     }
     .btn:hover {
       background-color: #444;
@@ -45,7 +58,6 @@
       border-radius: 10px;
       margin-top: 20px;
     }
-
     form {
       display: flex;
       flex-direction: column;
@@ -55,12 +67,15 @@
     }
     label {
       font-weight: bold;
+      font-size: 16px;
     }
     input, textarea, select {
       padding: 10px;
       font-size: 16px;
       border-radius: 6px;
       border: 1px solid #ccc;
+      width: 100%;
+      box-sizing: border-box;
     }
     button[type="submit"] {
       background-color: #00875a;
@@ -71,34 +86,65 @@
       border-radius: 6px;
       cursor: pointer;
       transition: background-color 0.3s ease;
+      font-weight: bold;
     }
     button[type="submit"]:hover {
       background-color: #006b45;
+    }
+
+    /* Success message style */
+    .success-message {
+      background-color: #d4edda;
+      color: #155724;
+      padding: 15px;
+      border-radius: 6px;
+      margin-top: 20px;
+      font-weight: bold;
+      display: none;
+      text-align: center;
+    }
+
+    /* Footer section */
+    footer {
+      max-width: 600px;
+      margin: 30px auto 50px;
+      text-align: center;
+      color: #555;
+      font-size: 14px;
+    }
+    footer a {
+      color: #00875a;
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: bold;
+    }
+    footer a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
 
-  <!-- Logo এখানে -->
+  <!-- Logo -->
   <div style="text-align:center; margin-top: 30px;">
-    <img src="itaaf-new-logo.png.png" alt="Itaaf Logo" style="max-width: 200px;">
+    <img src="itaaf-new-logo.png" alt="Itaaf Logo" style="max-width: 200px;" />
   </div>
 
   <div class="container">
     <h1>Itaaf × Ibtisam</h1>
     <p>Introducing our <strong>Premium Dhuti Panjabi Collection</strong> – a seamless blend of tradition and luxury. Crafted with precision for your festive elegance.</p>
-    <img src="https://via.placeholder.com/500x300?text=Dhuti+Panjabi+Collection" alt="Dhuti Panjabi">
-    <a href="#order-form" class="btn">অর্ডার নাও</a>
+    <img src="https://via.placeholder.com/500x300?text=Dhuti+Panjabi+Collection" alt="Dhuti Panjabi" />
+    <a href="#order-form" class="btn" id="order-btn">অর্ডার নাও</a>
   </div>
 
   <div class="container" id="order-form">
     <h2>অর্ডার ফর্ম</h2>
-    <form action="https://formspree.io/f/xblownpl" method="POST">
+    <form id="orderForm" action="https://formspree.io/f/xblownpl" method="POST">
       <label for="name">নাম:</label>
-      <input type="text" name="name" id="name" required>
+      <input type="text" name="name" id="name" required />
 
       <label for="phone">মোবাইল নম্বর:</label>
-      <input type="text" name="phone" id="phone" required>
+      <input type="tel" name="phone" id="phone" required pattern="[0-9]+" title="শুধু সংখ্যাই লিখুন" />
 
       <label for="address">ঠিকানা:</label>
       <textarea name="address" id="address" required></textarea>
@@ -114,7 +160,70 @@
 
       <button type="submit">অর্ডার কনফার্ম করুন</button>
     </form>
+
+    <div class="success-message" id="successMessage">
+      ধন্যবাদ! আপনার অর্ডার সফলভাবে গ্রহণ করা হয়েছে।
+    </div>
   </div>
 
+  <footer>
+    <p>যোগাযোগ: <a href="tel:+880123456789">+880123456789</a> | ইমেইল: <a href="mailto:info@itaaf.com">info@itaaf.com</a></p>
+    <p>
+      আমাদের অনুসরণ করুন:
+      <a href="https://facebook.com/itaafshop" target="_blank" rel="noopener noreferrer">Facebook</a> |
+      <a href="https://instagram.com/itaafshop" target="_blank" rel="noopener noreferrer">Instagram</a>
+    </p>
+  </footer>
+
+  <script>
+    // Smooth scroll is handled by CSS scroll-behavior but in case you want JS smooth scroll:
+    document.getElementById('order-btn').addEventListener('click', function(event) {
+      event.preventDefault();
+      document.querySelector('#order-form').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // Form validation for phone input (only digits)
+    const phoneInput = document.getElementById('phone');
+    phoneInput.addEventListener('input', function() {
+      this.value = this.value.replace(/[^0-9]/g, '');
+    });
+
+    // Show success message after form submit
+    const form = document.getElementById('orderForm');
+    const successMessage = document.getElementById('successMessage');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent default submission
+
+      // Simple validation check (browser will already check required and pattern)
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      // Send form data using fetch to Formspree
+      const formData = new FormData(form);
+
+      fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      }).then(response => {
+        if (response.ok) {
+          // Show success message and reset form
+          successMessage.style.display = 'block';
+          form.reset();
+          // Scroll to success message
+          successMessage.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          alert('দুঃখিত, কিছু সমস্যা হয়েছে। পরে আবার চেষ্টা করুন।');
+        }
+      }).catch(() => {
+        alert('দুঃখিত, কিছু সমস্যা হয়েছে। পরে আবার চেষ্টা করুন।');
+      });
+    });
+  </script>
 </body>
 </html>
