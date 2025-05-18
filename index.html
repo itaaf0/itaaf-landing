@@ -1,135 +1,335 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="bn">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Order Now</title>
-  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Itaaf × Ibtisam - প্রিমিয়াম ধুতি পাঞ্জাবি কালেকশন</title>
   <style>
     body {
-      font-family: 'Hind Siliguri', sans-serif;
+      font-family: sans-serif;
       margin: 0;
-      padding: 0;
-      background: linear-gradient(to right, #fdfbfb, #ebedee);
-    }.container {
-  max-width: 600px;
-  margin: 40px auto;
-  padding: 25px;
-  background-color: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-  border: 1px solid #ddd;
-  position: relative;
-}
-
-h1 {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #004d40;
-}
-
-.form-group {
-  margin-bottom: 15px;
-}
-
-label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-
-input, select, textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-}
-
-button {
-  background-color: #00695c;
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: #004d40;
-}
-
-.price {
-  text-align: center;
-  margin: 15px 0;
-  font-size: 20px;
-}
-
-.price del {
-  color: red;
-  margin-right: 10px;
-}
-
-.discount-badge {
-  background: crimson;
-  color: white;
-  padding: 6px 12px;
-  border-radius: 20px;
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  font-size: 14px;
-  font-weight: bold;
-}
-
-@media (max-width: 600px) {
-  button {
-    width: 100%;
-  }
-}
-
+      padding: 0 10px;
+      background-color: #f8f8f8;
+      font-size: 18px;
+      scroll-behavior: smooth;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 20px;
+        padding: 0 15px;
+      }
+    }
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      background: #fff;
+      padding: 20px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      text-align: center;
+      position: relative;
+    }
+    h1, h2 {
+      color: #222;
+      margin-bottom: 15px;
+    }
+    p {
+      color: #555;
+      line-height: 1.6;
+    }
+    .btn {
+      display: inline-block;
+      padding: 10px 25px;
+      background-color: #222;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      margin-top: 15px;
+      transition: background 0.3s ease;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 18px;
+    }
+    .btn:hover {
+      background-color: #444;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 20px;
+      text-align: left;
+    }
+    label {
+      font-weight: bold;
+      font-size: 16px;
+    }
+    input, textarea, select {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    button[type="submit"] {
+      background-color: #00875a;
+      color: white;
+      border: none;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      font-weight: bold;
+    }
+    button[type="submit"]:hover {
+      background-color: #006b45;
+    }
+    .success-message {
+      background-color: #d4edda;
+      color: #155724;
+      padding: 15px;
+      border-radius: 6px;
+      margin-top: 20px;
+      font-weight: bold;
+      display: none;
+      text-align: center;
+    }
+    footer {
+      max-width: 600px;
+      margin: 30px auto 50px;
+      text-align: center;
+      color: #555;
+      font-size: 14px;
+    }
+    footer a {
+      color: #00875a;
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: bold;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+    .slider {
+      position: relative;
+      text-align: center;
+      margin-top: 20px;
+    }
+    .slider img {
+      max-width: 100%;
+      border-radius: 10px;
+    }
+    .slider button {
+      position: absolute;
+      top: 45%;
+      transform: translateY(-50%);
+      background-color: rgba(0,0,0,0.5);
+      color: white;
+      border: none;
+      padding: 18px;
+      font-size: 26px;
+      cursor: pointer;
+      border-radius: 50%;
+    }
+    .slider button:hover {
+      background-color: rgba(0,0,0,0.8);
+    }
+    .slider button:first-child {
+      left: 10px;
+    }
+    .slider button:last-child {
+      right: 10px;
+    }
+    .price {
+      margin-top: 15px;
+      font-size: 22px;
+      text-align: center;
+    }
+    .old-price {
+      color: red;
+      text-decoration: line-through;
+      margin-right: 10px;
+    }
+    .new-price {
+      color: green;
+      font-weight: bold;
+    }
   </style>
 </head>
-<body>  <div class="container">
-    <div class="discount-badge">Limited Offer!</div>
-    <h1>অর্ডার করুন</h1><div class="price">
-  <del>৳১৮০০</del>
-  <span>৳১৪৯৯</span>
-</div>
+<body>
 
-<form id="order-form">
-  <div class="form-group">
-    <label for="name">আপনার নাম:</label>
-    <input type="text" id="name" name="name" required>
+  <div style="text-align:center; margin-top: 30px;">
+    <img src="https://i.postimg.cc/rwdntXpH/itaaf-logo.png" alt="Itaaf Logo" style="max-width: 200px;" />
   </div>
 
-  <div class="form-group">
-    <label for="phone">মোবাইল নাম্বার:</label>
-    <input type="tel" id="phone" name="phone" required>
+  <div class="container">
+    <h1>Itaaf × Ibtisam</h1>
+    <p><strong>হাদিয়া কালেকশন | ঈদ-উল-আযহার বিশেষ আয়োজন</strong><br>
+    ঈদের ছুটিতে আব্বু, ভাই, মামা কিংবা আপনার প্রিয় কাউকে একটি অর্থবহ হাদিয়া দিতে চাইছেন?<br>
+    তাহলে এই কালেকশনটি আপনার জন্যই।<br>
+    প্রিমিয়াম ধুতি পাঞ্জাবি থেকে শুরু করে ডেলিভারি পর্যন্ত—প্রতিটি ধাপে রেখেছি আমরা যত্ন ও আন্তরিকতার ছোঁয়া।<br>
+    চলুন, এবার ঈদে উপহার হোক সত্যিকারের বিশেষ অনুভূতির বহিঃপ্রকাশ।</p>
+
+    <p><strong>Itaaf – Where Elegance is Woven In</strong></p>
+
+    <div class="slider">
+      <button onclick="prevSlide()">‹</button>
+      <img id="slideImage" src="https://i.postimg.cc/Y9SrWF0t/Photoroom-20250517-101143.png" alt="Slide Image" />
+      <button onclick="nextSlide()">›</button>
+      <div class="price">
+        <del class="old-price">৳১৮০০</del>
+        <span class="new-price">৳১৪৯৯</span>
+      </div>
+    </div>
+
+    <a href="#order-form" class="btn" id="order-btn">অর্ডার করতে ক্লিক করুন</a>
   </div>
 
-  <div class="form-group">
-    <label for="size">সাইজ সিলেক্ট করুন:</label>
-    <select id="size" name="size" required>
-      <option value="">-- সিলেক্ট করুন --</option>
-      <option value="M">M</option>
-      <option value="L">L</option>
-      <option value="XL">XL</option>
-    </select>
+  <div class="container" id="order-form">
+    <h2>Limited Offer! অর্ডার করুন</h2>
+    <form id="orderForm" action="https://formspree.io/f/xblownpl" method="POST">
+      <div class="form-group">
+        <label for="name">আপনার নাম:</label>
+        <input type="text" id="name" name="name" required />
+      </div>
+
+      <div class="form-group">
+        <label for="phone">মোবাইল নাম্বার:</label>
+        <input type="tel" id="phone" name="phone" required pattern="[0-9]+" title="শুধু সংখ্যাই লিখুন" />
+      </div>
+
+      <div class="form-group">
+        <label for="size">সাইজ সিলেক্ট করুন:</label>
+        <select id="size" name="size" required>
+          <option value="">-- সিলেক্ট করুন --</option>
+          <option value="M">M</option>
+          <option value="L">L</option>
+          <option value="XL">XL</option>
+          <option value="XXL">XXL</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="address">ঠিকানা:</label>
+        <textarea id="address" name="address" rows="3" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="note">অতিরিক্ত তথ্য (যদি থাকে):</label>
+        <textarea id="note" name="note" rows="2"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>কালার নির্বাচন করুন:</label>
+        <div id="colorSelector" style="display:flex; gap: 20px; justify-content:center; margin-bottom: 15px;">
+          <div style="text-align:center;">
+            <img src="https://i.postimg.cc/Y9SrWF0t/Photoroom-20250517-101143.png" alt="Blue" style="width:100px; cursor:pointer; border: 3px solid transparent; border-radius:10px;" data-color="Blue" />
+            <p>Blue</p>
+          </div>
+          <div style="text-align:center;">
+            <img src="https://i.postimg.cc/JhpTMR7d/Photoroom-20250516-105546.png" alt="Yellow" style="width:100px; cursor:pointer; border: 3px solid transparent; border-radius:10px;" data-color="Yellow" />
+            <p>Yellow</p>
+          </div>
+        </div>
+        <input type="hidden" name="color" id="selectedColor" required />
+      </div>
+
+      <button type="submit">অর্ডার কনফার্ম করুন</button>
+    </form>
+
+    <div class="success-message" id="successMessage">
+      ধন্যবাদ! আপনার অর্ডার সফলভাবে গ্রহণ করা হয়েছে।
+    </div>
   </div>
 
-  <div class="form-group">
-    <label for="address">ঠিকানা:</label>
-    <textarea id="address" name="address" rows="3" required></textarea>
-  </div>
+  <footer>
+    <p>যোগাযোগ: <a href="tel:+8801992280837">+8801992280837</a> | ইমেইল: <a href="mailto:itaafshop@gmail.com">itaafshop@gmail.com</a></p>
+    <p>
+      আমাদের ফলো করুন:
+      <a href="https://www.facebook.com/profile.php?id=61557381281425&mibextid=ZbWKwL" target="_blank" rel="noopener noreferrer">Facebook</a> |
+      <a href="https://wa.me/8801992280837" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+    </p>
+  </footer>
 
-  <div class="form-group">
-    <label for="note">অতিরিক্ত তথ্য (যদি থাকে):</label>
-    <textarea id="note" name="note" rows="2"></textarea>
-  </div>
+  <script>
+    // Color selector logic
+    const colorImages = document.querySelectorAll('#colorSelector img');
+    const selectedColorInput = document.getElementById('selectedColor');
+    colorImages.forEach(img => {
+      img.addEventListener('click', () => {
+        colorImages.forEach(i => i.style.border = '3px solid transparent');
+        img.style.border = '3px solid #00875a';
+        selectedColorInput.value = img.dataset.color;
+      });
+    });
 
-  <button type="submit">অর্ডার কনফার্ম করুন</button>
-</form>
+    // Smooth scroll to order form
+    document.getElementById('order-btn').addEventListener('click', function(event) {
+      event.preventDefault();
+      document.querySelector('#order-form').scrollIntoView({ behavior: 'smooth' });
+    });
 
-  </div></body>
+    // Allow only digits in phone input
+    const phoneInput = document.getElementById('phone');
+    phoneInput.addEventListener('input', function() {
+      this.value = this.value.replace(/[^0-9]/g, '');
+    });
+
+    // Form submission with success message
+    const form = document.getElementById('orderForm');
+    const successMessage = document.getElementById('successMessage');
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+      const formData = new FormData(form);
+      fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      }).then(response => {
+        if (response.ok) {
+          successMessage.style.display = 'block';
+          form.reset();
+          selectedColorInput.value = '';
+          colorImages.forEach(i => i.style.border = '3px solid transparent');
+          successMessage.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          alert('দুঃখিত, কিছু সমস্যা হয়েছে। পরে আবার চেষ্টা করুন।');
+        }
+      }).catch(() => {
+        alert('দুঃখিত, কিছু সমস্যা হয়েছে। পরে আবার চেষ্টা করুন।');
+      });
+    });
+
+    // Slider functionality
+    const images = [
+      "https://i.postimg.cc/Y9SrWF0t/Photoroom-20250517-101143.png",
+      "https://i.postimg.cc/JhpTMR7d/Photoroom-20250516-105546.png"
+    ];
+    let currentIndex = 0;
+    const slideImage = document.getElementById("slideImage");
+    function showSlide(index) {
+      slideImage.src = images[index];
+    }
+    function prevSlide() {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      showSlide(currentIndex);
+    }
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % images.length;
+      showSlide(currentIndex);
+    }
+    showSlide(currentIndex);
+  </script>
+</body>
 </html>
