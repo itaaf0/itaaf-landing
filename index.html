@@ -121,6 +121,36 @@
     footer a:hover {
       text-decoration: underline;
     }
+    .slider {
+  position: relative;
+  text-align: center;
+  margin-top: 20px;
+}
+.slider img {
+  max-width: 100%;
+  border-radius: 10px;
+}
+.slider button {
+  position: absolute;
+  top: 45%;
+  transform: translateY(-50%);
+  background-color: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 22px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+.slider button:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+.slider button:first-child {
+  left: 10px;
+}
+.slider button:last-child {
+  right: 10px;
+}
   </style>
 </head>
 <body>
@@ -133,7 +163,11 @@
   <div class="container">
     <h1>Itaaf × Ibtisam</h1>
     <p>Introducing our <strong>Premium Dhuti Panjabi Collection</strong> – a seamless blend of tradition and luxury. Crafted with precision for your festive elegance.</p>
-    <img src="https://i.postimg.cc/Y9SrWF0t/Photoroom-20250517-101143.png" alt="Dhuti Panjabi">
+    <div class="slider">
+  <img id="slideImage" src="https://i.postimg.cc/Y9SrWF0t/Photoroom-20250517-101143.png" alt="Slide Image" />
+  <button onclick="prevSlide()">‹</button>
+  <button onclick="nextSlide()">›</button>
+</div>
     <a href="#order-form" class="btn" id="order-btn">অর্ডার করতে ক্লিক করুন</a>
   </div>
 
@@ -224,6 +258,28 @@
         alert('দুঃখিত, কিছু সমস্যা হয়েছে। পরে আবার চেষ্টা করুন।');
       });
     });
+    <script>
+  const images = [
+    "https://i.postimg.cc/Y9SrWF0t/Photoroom-20250517-101143.png",
+    "https://i.postimg.cc/rwdntXpH/itaaf-logo.png"
+  ];
+  let currentIndex = 0;
+  const slideImage = document.getElementById("slideImage");
+
+  function showSlide(index) {
+    slideImage.src = images[index];
+  }
+
+  function prevSlide() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    showSlide(currentIndex);
+  }
+
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % images.length;
+    showSlide(currentIndex);
+  }
+</script>
   </script>
 </body>
 </html>
