@@ -192,6 +192,18 @@
         <option value="XXL">XXL</option>
       </select>
 
+      <label>কালার নির্বাচন করুন:</label>
+<div id="colorSelector" style="display:flex; gap: 20px; justify-content:center; margin-bottom: 15px;">
+  <div style="text-align:center;">
+    <img src="https://i.postimg.cc/Y9SrWF0t/Photoroom-20250517-101143.png" alt="Blue" style="width:100px; cursor:pointer; border: 3px solid transparent; border-radius:10px;" data-color="Blue" />
+    <p>Blue</p>
+  </div>
+  <div style="text-align:center;">
+    <img src="https://i.postimg.cc/JhpTMR7d/Photoroom-20250516-105546.png" alt="Yellow" style="width:100px; cursor:pointer; border: 3px solid transparent; border-radius:10px;" data-color="Yellow" />
+    <p>Yellow</p>
+  </div>
+</div>
+<input type="hidden" name="color" id="selectedColor" required />
       <button type="submit">অর্ডার কনফার্ম করুন</button>
     </form>
 
@@ -210,6 +222,19 @@
   </footer>
 
   <script>
+    const colorImages = document.querySelectorAll('#colorSelector img');
+  const selectedColorInput = document.getElementById('selectedColor');
+
+  colorImages.forEach(img => {
+    img.addEventListener('click', () => {
+      // সব বর্ডার রিসেট
+      colorImages.forEach(i => i.style.border = '3px solid transparent');
+      // সিলেক্টেড ছবির বর্ডার
+      img.style.border = '3px solid #00875a';
+      // ইনপুটে ভ্যালু সেট
+      selectedColorInput.value = img.dataset.color;
+    });
+  });
     // Smooth scroll is handled by CSS scroll-behavior but in case you want JS smooth scroll:
     document.getElementById('order-btn').addEventListener('click', function(event) {
       event.preventDefault();
