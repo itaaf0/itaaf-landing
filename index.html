@@ -290,18 +290,18 @@
 
     const form = document.getElementById('orderForm');
     const successMessage = document.getElementById('successMessage');
-    <script>
-  const requiredFields = document.querySelectorAll("#orderForm input[required], #orderForm select[required], #orderForm textarea[required]");
+    // Custom validation message in Bengali
+const requiredFields = document.querySelectorAll("#orderForm input[required], #orderForm select[required], #orderForm textarea[required]");
 
-  requiredFields.forEach(field => {
-    field.addEventListener("invalid", function (e) {
-      e.target.setCustomValidity("এই ঘরটি পূরণ করা আবশ্যক।");
-    });
-    field.addEventListener("input", function (e) {
-      e.target.setCustomValidity("");
-    });
+requiredFields.forEach(field => {
+  field.addEventListener("invalid", function (e) {
+    e.target.setCustomValidity("এই ঘরটি পূরণ করা আবশ্যক।");
   });
-</script>
+  field.addEventListener("input", function (e) {
+    e.target.setCustomValidity("");
+  });
+});
+    
     form.addEventListener('submit', function(event) {
       event.preventDefault();
       if (!form.checkValidity()) {
