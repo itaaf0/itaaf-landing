@@ -227,10 +227,22 @@
         <option value="XXL">XXL</option>
       </select>
       <div class="form-group">
-  <label for="quantity">পরিমাণ (কত সেট/পিস):</label>
-  <input type="number" id="quantity" name="quantity" min="1" value="1" required />
+  <label for="quantity">কতটি অর্ডার করবেন?</label>
+  <select id="quantity" name="quantity" required>
+    <option value="1" selected>1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+  </select>
+  <small style="display: block; margin-top: 8px; color: #555;">
+    ৫টির বেশি অর্ডার করতে চাইলে 
+    <a href="https://wa.me/8801992280837?text=আমি ৫টির বেশি অর্ডার করতে চাই" 
+       style="color: #00875a; font-weight: bold; text-decoration: underline;" 
+       target="_blank" rel="noopener noreferrer">WhatsApp</a>
+    এ মেসেজ করুন।
+  </small>
 </div>
-
       <label for="address">ঠিকানা:</label>
       <textarea id="address" name="address" rows="3" required></textarea>
 
