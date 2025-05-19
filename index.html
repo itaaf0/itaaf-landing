@@ -331,5 +331,40 @@
     }
     showSlide(currentIndex);
   </script>
+  <script>
+  const form = document.getElementById('orderForm');
+  const inputs = form.querySelectorAll('input, textarea, select');
+
+  inputs.forEach(input => {
+    input.addEventListener('invalid', function(e) {
+      e.preventDefault();
+      if (!input.validity.valid) {
+        if (input.name === 'name') {
+          input.setCustomValidity('অনুগ্রহ করে আপনার নাম লিখুন।');
+        } else if (input.name === 'phone') {
+          input.setCustomValidity('অনুগ্রহ করে আপনার মোবাইল নম্বর লিখুন।');
+        } else if (input.name === 'address') {
+          input.setCustomValidity('অনুগ্রহ করে আপনার ঠিকানা লিখুন।');
+        } else if (input.name === 'size') {
+          input.setCustomValidity('অনুগ্রহ করে সাইজ নির্বাচন করুন।');
+        } else if (input.name === 'color') {
+          input.setCustomValidity('অনুগ্রহ করে একটি কালার নির্বাচন করুন।');
+        }
+      }
+    });
+
+    input.addEventListener('input', function() {
+      input.setCustomValidity('');
+    });
+  });
+
+  form.addEventListener('submit', function(e) {
+    if (!form.checkValidity()) {
+      e.preventDefault();
+    } else {
+      alert('আপনার অর্ডার গ্রহণ করা হয়েছে।');
+    }
+  });
+</script>
 </body>
 </html>
