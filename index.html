@@ -306,6 +306,14 @@
     এ মেসেজ করুন।
   </small>
 </div>
+      <label for="delivery" style="display:block; margin-top:15px; font-weight:bold;">ডেলিভারি এলাকা:</label>
+<select id="delivery" name="delivery" required style="width:100%; padding:8px; margin-top:5px;">
+  <option value="">-- এলাকা সিলেক্ট করুন --</option>
+  <option value="60">ঢাকার ভিতরে</option>
+  <option value="120">ঢাকার বাহিরে</option>
+</select>
+
+<p id="deliveryChargeInfo" style="margin-top:10px; font-weight:bold; color:#2c3e50;">ডেলিভারি চার্জ: ০ টাকা</p>
 
       <label for="address">ঠিকানা:</label>
       <textarea id="address" name="address" rows="3" required></textarea>
@@ -448,5 +456,26 @@ requiredFields.forEach(field => {
       window.open(whatsappUrl, "_blank");
     });
   </script>
+  <script>
+const quantitySelect = document.getElementById("quantity");
+const deliverySelect = document.getElementById("delivery");
+const deliveryInfo = document.getElementById("deliveryChargeInfo");
+
+function updateDeliveryCharge() {
+  const quantity = parseInt(quantitySelect.value);
+  const delivery = parseInt(deliverySelect.value);
+  
+  if (quantity >= 2) {
+    deliveryInfo.innerText = "ডেলিভারি চার্জ: ফ্রি";
+  } else if (delivery > 0) {
+    deliveryInfo.innerText = `ডেলিভারি চার্জ: ${delivery} টাকা`;
+  } else {
+    deliveryInfo.innerText = "ডেলিভারি চার্জ: ০ টাকা";
+  }
+}
+
+quantitySelect.addEventListener("change", updateDeliveryCharge);
+deliverySelect.addEventListener("change", updateDeliveryCharge);
+</script>
 </body>
 </html>
