@@ -479,5 +479,45 @@ function updateDeliveryCharge() {
 quantitySelect.addEventListener("change", updateDeliveryCharge);
 deliverySelect.addEventListener("change", updateDeliveryCharge);
 </script>
+  <script>
+  const deliveryDropdown = document.getElementById("delivery");
+  const chargeInfo = document.getElementById("deliveryChargeInfo");
+  const quantitySelect = document.getElementById("quantity");
+
+  function updateDeliveryCharge() {
+    let charge = parseInt(deliveryDropdown.value || 0);
+    let quantity = parseInt(quantitySelect.value || 1);
+    if (quantity >= 2) charge = 0;
+    chargeInfo.textContent = "ডেলিভারি চার্জ: " + charge + " টাকা";
+  }
+
+  deliveryDropdown.addEventListener("change", updateDeliveryCharge);
+  quantitySelect.addEventListener("change", updateDeliveryCharge);
+
+  // Slider functionality
+  const images = [
+    "https://i.postimg.cc/Y9SrWF0t/Photoroom-20250517-101143.png",
+    "https://i.postimg.cc/4NcZ6jC6/white-panjabi.png"
+  ];
+  let currentIndex = 0;
+
+  function showSlide(index) {
+    const imgElement = document.getElementById("slideImage");
+    imgElement.src = images[index];
+  }
+
+  function prevSlide() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    showSlide(currentIndex);
+  }
+
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % images.length;
+    showSlide(currentIndex);
+  }
+
+  // Initialize delivery charge info
+  updateDeliveryCharge();
+</script>
 </body>
 </html>
