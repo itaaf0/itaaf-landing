@@ -543,59 +543,5 @@ deliverySelect.addEventListener("change", updateDeliveryCharge);
 
   calculateTotal();  
 </script>
-  <div style="max-width: 400px; margin: 20px auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px;">
-  <h2>প্রিমিয়াম ধুতি পাঞ্জাবি</h2>
-
-  <label for="color">কালার বেছে নিন:</label><br>
-  <select id="color" style="width: 100%; padding: 5px; margin: 10px 0;">
-    <option value="blue">blue</option>
-    <option value="yellow">yellow </option>
-  </select>
-
-  <img id="productImage" src="https://i.postimg.cc/Y9SrWF0t/Photoroom-20250517-101143.png"alt="প্রিমিয়াম ধুতি পাঞ্জাবি" style="width: 100%; border-radius: 8px;">
-  <p style="font-size: 16px; margin-top: 10px;">দাম: ১৪৯৯ টাকা</p>
-    <img id="productImage" src="https://i.postimg.cc/JhpTMR7d/Photoroom-20250516-105546.png"alt="প্রিমিয়াম ধুতি পাঞ্জাবি" style="width: 100%; border-radius: 8px;">
-  <p style="font-size: 16px; margin-top: 10px;">দাম: ১৪৯৯ টাকা</p>
-
-
-  <label for="quantity">পরিমাণ:</label>
-  <input type="number" id="quantity" value="1" min="1" style="width: 60px; margin-bottom: 10px;">
-
-  <h3>মোট মূল্য: <span id="totalPrice">১৪৯৯</span> টাকা</h3>
-
-  <button onclick="submitOrder()" style="padding: 10px 20px; background-color: #28a745; color: white; border: none; border-radius: 5px;">অর্ডার করুন</button>
-</div>
-
-<script>
-  const pricePerItem = 1499;
-  const quantityInput = document.getElementById('quantity');
-  const totalPriceSpan = document.getElementById('totalPrice');
-  const colorSelect = document.getElementById('color');
-  const productImage = document.getElementById('productImage');
-
-  function updatePrice() {
-    const quantity = parseInt(quantityInput.value) || 1;
-    totalPriceSpan.textContent = quantity * pricePerItem;
-  }
-
-  function updateImage() {
-    const selectedColor = colorSelect.value;
-    if (selectedColor === "blue") {
-      productImage.src = "https://i.postimg.cc/Y9SrWF0t/Photoroom-20250517-101143.png"; 
-    } else if (selectedColor === "yellow") {
-      productImage.src = "https://i.postimg.cc/JhpTMR7d/Photoroom-20250516-105546.png"; //
-    }
-  }
-
-  function submitOrder() {
-    const quantity = parseInt(quantityInput.value) || 1;
-    const color = colorSelect.value;
-    const total = quantity * pricePerItem;
-    alert("আপনি " + quantity + " পিস '" + color + "' কালার অর্ডার করেছেন। মোট দাম: " + total + " টাকা।");
-  }
-
-  quantityInput.addEventListener('input', updatePrice);
-  colorSelect.addEventListener('change', updateImage);
-</script>
 </body>
 </html>
