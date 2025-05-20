@@ -334,6 +334,7 @@
       </div>
       <input type="hidden" name="color" id="selectedColor" required />
 
+      <h3>মোট মূল্য: <span id="totalPrice">0</span> টাকা</h3>
       <button type="submit">অর্ডার কনফার্ম করুন</button>
     </form>
 
@@ -518,6 +519,31 @@ deliverySelect.addEventListener("change", updateDeliveryCharge);
 
   // Initialize delivery charge info
   updateDeliveryCharge();
+</script>
+  <script>
+  const price1 = 500;  // প্রথম প্রোডাক্টের দাম
+  const price2 = 300;  // দ্বিতীয় প্রোডাক্টের দাম
+
+  const product1Input = document.getElementById('product1');
+  const product2Input = document.getElementById('product2');
+  const totalPriceSpan = document.getElementById('totalPrice');
+
+  function calculateTotal() {
+    const qty1 = parseInt(product1Input.value) || 0;
+    const qty2 = parseInt(product2Input.value) || 0;
+    const total = qty1 * price1 + qty2 * price2;
+    totalPriceSpan.textContent = total;
+  }
+
+  product1Input.addEventListener('input', calculateTotal);
+  product2Input.addEventListener('input', calculateTotal);
+
+  document.getElementById('orderForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    alert('আপনার মোট অর্ডার মূল্য: ' + totalPriceSpan.textContent + ' টাকা');
+  });
+
+  calculateTotal();  // পেজ লোড হলে প্রথমেই মোট হিসাব দেখাবে
 </script>
 </body>
 </html>
