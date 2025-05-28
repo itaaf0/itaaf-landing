@@ -363,6 +363,18 @@ button[type="submit"]:hover {
 
       <h3>মোট মূল্য: <span id="totalPrice">0</span> টাকা</h3>
       <button type="submit">অর্ডার কনফার্ম করুন</button>
+      <label>কালার নির্বাচন করুন:</label>
+<select name="color" onchange="calculateTotal()" id="color-select" required>
+  <option value="">-- একটি নির্বাচন করুন --</option>
+  <option value="Black">Black - ৳1499</option>
+  <option value="White">White - ৳1499</option>
+</select>
+
+<div id="summary" style="margin-top: 20px; text-align: left;">
+  <p><strong>পণ্য মূল্য:</strong> <span id="product-price">৳0</span></p>
+  <p><strong>ডেলিভারি চার্জ:</strong> <span id="delivery-charge">৳60</span></p>
+  <p><strong>মোট:</strong> <span id="total-price">৳0</span></p>
+</div>
     </form>
     <p style="color: green;">আপনার অর্ডার সফলভাবে সাবমিট হয়েছে!</p>
 
@@ -570,6 +582,22 @@ deliverySelect.addEventListener("change", updateDeliveryCharge);
   });
 
   calculateTotal();  
+</script>
+  <script>
+  function calculateTotal() {
+    const productPrice = 1499;
+    const deliveryCharge = 60;
+    const colorSelect = document.getElementById("color-select").value;
+    
+    if (colorSelect) {
+      document.getElementById("product-price").innerText = "৳" + productPrice;
+      document.getElementById("delivery-charge").innerText = "৳" + deliveryCharge;
+      document.getElementById("total-price").innerText = "৳" + (productPrice + deliveryCharge);
+    } else {
+      document.getElementById("product-price").innerText = "৳0";
+      document.getElementById("total-price").innerText = "৳0";
+    }
+  }
 </script>
 </body>
 </html>
