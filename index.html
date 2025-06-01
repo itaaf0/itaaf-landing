@@ -539,6 +539,12 @@ button[type="submit"]:hover {
         <img src="https://i.postimg.cc/JhpTMR7d/Photoroom-20250516-105546.png" alt="Yellow" />
         <span>Yellow – ৳1499</span>
       </div>
+      <div id="priceDisplay" style="text-align: center; margin-top: 20px;">
+  <p>
+    <span style="color: gray; text-decoration: line-through;">৳<span id="regularPrice">1800</span></span><br />
+    <span style="font-size: 20px; font-weight: bold; color: green;">৳<span id="discountPrice">1499</span></span>
+  </p>
+</div>
     </div>
   </div>
 </div>
@@ -803,6 +809,27 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 });
+</script>
+  <script>
+  const regularPriceElement = document.getElementById('regularPrice');
+  const discountPriceElement = document.getElementById('discountPrice');
+  const optionElements = document.querySelectorAll('.custom-select .option');
+
+  const priceMap = {
+    blue: { regular: 1800, discount: 1499 },
+    yellow: { regular: 1800, discount: 1499 }
+  };
+
+  optionElements.forEach(option => {
+    option.addEventListener('click', function () {
+      const selectedColor = this.getAttribute('data-value');
+
+      if (priceMap[selectedColor]) {
+        regularPriceElement.textContent = priceMap[selectedColor].regular;
+        discountPriceElement.textContent = priceMap[selectedColor].discount;
+      }
+    });
+  });
 </script>
 </body>
 </html>
