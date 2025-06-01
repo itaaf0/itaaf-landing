@@ -223,15 +223,119 @@ button[type="submit"]:hover {
 
     <p><strong>Itaaf – Where Elegance is Woven In</strong></p>
 
-    <div class="slider">
-      <button onclick="prevSlide()">‹</button>
-      <img id="slideImage" src="https://i.postimg.cc/Y9SrWF0t/Photoroom-20250517-101143.png" alt="Slide Image" />
-      <button onclick="nextSlide()">›</button>
-      <div class="price">
-        <del class="old-price">৳১৮০০</del>
-        <span class="new-price">৳১৪৯৯</span>
-      </div>
-    </div>
+    <style>
+  .product-section {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to right, #fdfbfb, #ebedee);
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .product-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+  }
+
+  .product-images {
+    position: relative;
+  }
+
+  .product-images img {
+    width: 100%;
+    max-height: 450px;
+    object-fit: cover;
+    border-radius: 10px;
+    display: none;
+    transition: opacity 0.5s ease-in-out;
+  }
+
+  .product-images img.active {
+    display: block;
+  }
+
+  .arrow-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    font-size: 1.8rem;
+    padding: 8px 12px;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 4px;
+  }
+
+  .arrow-left {
+    left: 10px;
+  }
+
+  .arrow-right {
+    right: 10px;
+  }
+
+  .price {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 1.4rem;
+    color: #2c3e50;
+  }
+
+  .price del {
+    color: #e74c3c;
+    margin-right: 10px;
+  }
+</style>
+
+<div class="product-section">
+  <div class="product-title">প্রিমিয়াম ধুতি পাঞ্জাবি কালেকশন</div>
+
+  <div class="product-images">
+    <button class="arrow-btn arrow-left" onclick="prevImage()">&#10094;</button>
+    <img src="https://i.postimg.cc/Y9SrWF0t/Photoroom-20250517-101143.png" id="img-1" class="active" alt="Blue Panjabi">
+    <img src="https://i.postimg.cc/JhpTMR7d/Photoroom-20250516-105546.png" id="img-2" alt="Yellow Panjabi">
+    <button class="arrow-btn arrow-right" onclick="nextImage()">&#10095;</button>
+  </div>
+
+  <div class="price">
+    <del>৳1800</del> <strong>৳1499</strong>
+  </div>
+</div>
+
+<script>
+  let currentIndex = 0;
+  const images = document.querySelectorAll('.product-images img');
+  const totalImages = images.length;
+
+  function showImage(index) {
+    images.forEach((img, i) => {
+      img.classList.remove('active');
+      if (i === index) img.classList.add('active');
+    });
+  }
+
+  function nextImage() {
+    currentIndex = (currentIndex + 1) % totalImages;
+    showImage(currentIndex);
+  }
+
+  function prevImage() {
+    currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+    showImage(currentIndex);
+  }
+
+  // Auto slide every 3 seconds
+  setInterval(nextImage, 3000);
+</script>
 
     <a href="#order-form" class="btn" id="order-btn">অর্ডার করতে ক্লিক করুন</a>
   </div>
