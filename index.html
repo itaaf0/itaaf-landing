@@ -327,6 +327,59 @@ button[type="submit"]:hover {
   .color-btn.yellow {
     background-color: #f1c40f;
     color: white;
+    }
+
+  .color-btn.active {
+    border: 2px solid #2c3e50;
+  }
+
+  .price {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 1.4rem;
+    color: #2c3e50;
+  }
+
+  .price del {
+    color: #e74c3c;
+    margin-right: 10px;
+  }
+</style>
+
+<div class="product-section">
+  <div class="product-title">প্রিমিয়াম ধুতি পাঞ্জাবি কালেকশন</div>
+
+  <div class="product-images">
+    <img src="https://i.postimg.cc/Y9SrWF0t/Photoroom-20250517-101143.png" id="blue-img" class="product-image active" alt="Blue Panjabi">
+    <img src="https://i.postimg.cc/JhpTMR7d/Photoroom-20250516-105546.png" id="yellow-img" class="product-image" alt="Yellow Panjabi">
+  </div>
+
+  <div class="color-options">
+    <button class="color-btn blue active" onclick="switchProduct('blue')">Blue</button>
+    <button class="color-btn yellow" onclick="switchProduct('yellow')">Yellow</button>
+  </div>
+
+  <div class="price">
+    <del>৳1800</del> <strong>৳1499</strong>
+  </div>
+</div>
+
+<script>
+  function switchProduct(color) {
+    document.getElementById('blue-img').classList.remove('active');
+    document.getElementById('yellow-img').classList.remove('active');
+    document.querySelector('.color-btn.blue').classList.remove('active');
+    document.querySelector('.color-btn.yellow').classList.remove('active');
+
+    if (color === 'blue') {
+      document.getElementById('blue-img').classList.add('active');
+      document.querySelector('.color-btn.blue').classList.add('active');
+    } else {
+      document.getElementById('yellow-img').classList.add('active');
+      document.querySelector('.color-btn.yellow').classList.add('active');
+    }
+  }
+</script>
 
     <div style="max-width: 600px; margin: 30px auto; padding: 20px; background-color: #fefefe; border: 2px solid #ddd; border-radius: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
   <h3 style="font-size: 24px; color: #2c3e50; text-align: center; font-weight: bold; margin-bottom: 20px;">ডেলিভারি চার্জ</h3>
