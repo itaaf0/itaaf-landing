@@ -25,6 +25,58 @@
       transform: scale(1.05);
     }
   </style>
+  <style>
+.custom-select-wrapper {
+  width: 100%;
+  max-width: 400px;
+  margin: 1rem auto;
+}
+
+.custom-select {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  position: relative;
+  background: #fff;
+  cursor: pointer;
+}
+
+.custom-select .selected {
+  padding: 12px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.custom-select .options {
+  display: none;
+  border-top: 1px solid #ccc;
+  position: absolute;
+  width: 100%;
+  background: white;
+  z-index: 10;
+  max-height: 250px;
+  overflow-y: auto;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.custom-select .option {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  transition: background 0.2s;
+}
+
+.custom-select .option img {
+  width: 60px;
+  height: auto;
+  margin-right: 12px;
+  border-radius: 4px;
+}
+
+.custom-select .option:hover {
+  background: #f0f0f0;
+}
+</style>
   <link rel="icon" type="image/png" href="itaaf-logo.png">
   <style>
     body {
@@ -475,11 +527,22 @@ button[type="submit"]:hover {
       <textarea id="note" name="note" rows="2"></textarea>
 
       <label>কালার নির্বাচন করুন:</label>
-<select name="color" onchange="calculateTotal()" id="color-select" required>
-  <option value="">-- একটি নির্বাচন করুন --</option>
-  <option value="Black">Black - ৳1499</option>
-  <option value="White">White - ৳1499</option>
-</select>
+<div class="custom-select-wrapper">
+  <div class="custom-select" id="colorSelector">
+    <div class="selected">-- একটি নির্বাচন করুন --</div>
+    <div class="options">
+      <div class="option" data-value="blue">
+        <img src="https://i.postimg.cc/Y9SrWF0t/Photoroom-20250517-101143.png" alt="Blue" />
+        <span>Blue – ৳1499</span>
+      </div>
+      <div class="option" data-value="yellow">
+        <img src="https://i.postimg.cc/JhpTMR7d/Photoroom-20250516-105546.png" alt="Yellow" />
+        <span>Yellow – ৳1499</span>
+      </div>
+    </div>
+  </div>
+</div>
+<input type="hidden" id="selectedColor" name="selectedColor" />>
 
 <div id="summary" style="margin-top: 20px; text-align: left;">
   <p><strong>পণ্য মূল্য:</strong> <span id="product-price">৳0</span></p>
@@ -712,6 +775,34 @@ deliverySelect.addEventListener("change", updateDeliveryCharge);
       document.getElementById("total-price").innerText = "৳0";
     }
   }
+</script>
+  <script>
+document.addEventListener("DOMContentLoaded", function() {
+  const selectBox = document.querySelector("#colorSelector");
+  const selected = selectBox.querySelector(".selected");
+  const options = selectBox.querySelector(".options");
+  const allOptions = options.querySelectorAll(".option");
+  const hiddenInput = document.getElementById("selectedColor");
+
+  selected.addEventListener("click", () => {
+    options.style.display = options.style.display === "block" ? "none" : "block";
+  });
+
+  allOptions.forEach(option => {
+    option.addEventListener("click", () => {
+      selected.innerHTML = option.innerHTML;
+      hiddenInput.value = option.dataset.value;
+      options.style.display = "none";
+    });
+  });
+
+  // Close dropdown if clicked outside
+  document.addEventListener("click", (e) => {
+    if (!selectBox.contains(e.target)) {
+      options.style.display = "none";
+    }
+  });
+});
 </script>
 </body>
 </html>
